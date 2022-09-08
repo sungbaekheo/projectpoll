@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class PollsMain {
     public static void main(String[] args) {
-
+        
         final String DB_URL = "jdbc:mysql://localhost/polls";
         final String USER = "root";
         final String PASS = "tbrs00002b";
@@ -14,9 +14,10 @@ public class PollsMain {
         
         try {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-        
-        
+            Statement stmt = conn.createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY);
+            
         // 설문 프로그램 시작
             boolean run = true;
             while (run) {

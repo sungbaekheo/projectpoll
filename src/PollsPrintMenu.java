@@ -28,6 +28,9 @@ public class PollsPrintMenu {
         System.out.println("3. 이전 메뉴로 돌아가기");
         System.out.print("\n선택: ");
         int statisticsButton = Integer.parseInt(scan.nextLine());
+        System.out.println("-----------------------------------------------------------");
         return statisticsButton;
     }
+
+
 }

@@ -1,3 +1,7 @@
-public class pollsStatistics {
+import java.sql.*;
+import java.util.Scanner;
+
+
+public class PollsStatistics {
     
 }

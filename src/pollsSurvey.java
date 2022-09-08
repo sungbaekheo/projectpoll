@@ -1,3 +1,6 @@
-public class pollsSurvey {
+import java.sql.*;
+import java.util.Scanner;
+
+public class PollsSurvey {
     
 }

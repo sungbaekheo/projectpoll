@@ -16,7 +16,7 @@ public class PollsStatistics {
             int menu = prt.statisticsMenu();
             switch (menu) {
                 case 1: statisticsByResponses(stmt); break;
-                case 2: System.out.println("아직 미구현"); break;
+                case 2: statisticsByQuestions(stmt); break;
                 case 3: run = false;
             }
         }
@@ -68,7 +68,11 @@ public class PollsStatistics {
     }
 
     // 문항별 통계
+    public void statisticsByQuestions(Statement stmt) {
 
+
+
+    }
     
 
 }

@@ -28,7 +28,7 @@ public class PollsMain {
                     case "s":
                     case "S": sts.runStatistics(stmt); break;
                     case "q":
-                    case "Q": System.out.println("설문을 종료합니다."); run = false; break;
+                    case "Q": System.out.println("설문을 종료합니다."); run = false;
                 }
             }
         } catch (SQLException e) {

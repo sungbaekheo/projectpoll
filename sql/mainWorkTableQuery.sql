@@ -21,3 +21,25 @@ INNER JOIN quest ON qna.quest_key = quest.quest_key)
 INNER JOIN ans ON qna.ans_key = ans.ans_key)
 WHERE response.id = 1
 ;
+-- 특정 문항의 답항별 갯수를 가져오는 쿼리
+SELECT ans.answer, COUNT(ans.ans_key) as count
+FROM ((((response
+INNER JOIN res_q ON response.id = res_q.id)
+INNER JOIN qna ON res_q.qna_key = qna.qna_key)
+INNER JOIN quest ON qna.quest_key = quest.quest_key)
+INNER JOIN ans ON qna.ans_key = ans.ans_key)
+WHERE quest.quest_key = 1 and ans.ans_key = 4
+;
+
+SELECT answer FROM ans
+WHERE ans_key = 5
+;
+
+SELECT COUNT(ans.ans_key)
+FROM ((((response
+INNER JOIN res_q ON response.id = res_q.id)
+INNER JOIN qna ON res_q.qna_key = qna.qna_key)
+INNER JOIN quest ON qna.quest_key = quest.quest_key)
+INNER JOIN ans ON qna.ans_key = ans.ans_key)
+where quest.quest_key = 2 and ans.ans_key = 5
+;

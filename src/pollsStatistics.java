@@ -1,4 +1,7 @@
-import java.sql.*;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class PollsStatistics {
@@ -69,6 +72,17 @@ public class PollsStatistics {
 
     // 문항별 통계
     public void statisticsByQuestions(Statement stmt) {
+
+        try {
+
+            rs = stmt.executeQuery(qry.getMaxNum());
+            while(rs.next()) {
+                maxNum = rs.getInt("MAX(id)");
+            }
+            
+        } catch (SQLException e) {
+        e.printStackTrace();
+        }
 
 
 

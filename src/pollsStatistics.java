@@ -10,9 +10,10 @@ public class PollsStatistics {
     PollsPrintMenu prt = new PollsPrintMenu();
     ResultSet rs, rs2, rs3;
 
-    int maxNum, id, countQ;
-    String name;
+    int maxNum, id, countQ, countA, numberA; 
+    String name, answer, question;
 
+    // 통계 항목 실행 바디
     public void runStatistics(Statement stmt) {
         boolean run = true;
         while (run) {
@@ -21,6 +22,7 @@ public class PollsStatistics {
                 case 1: statisticsByResponses(stmt); break;
                 case 2: statisticsByQuestions(stmt); break;
                 case 3: run = false;
+                default : System.out.println("올바른 항목을 입력해주세요.");
             }
         }
         
@@ -74,12 +76,39 @@ public class PollsStatistics {
     public void statisticsByQuestions(Statement stmt) {
 
         try {
-
-            rs = stmt.executeQuery(qry.getMaxNum());
+            // 문항 갯수 받아오기
+            rs = stmt.executeQuery(qry.countQuest());
             while(rs.next()) {
-                maxNum = rs.getInt("MAX(id)");
+                countQ = rs.getInt("COUNT(question)");
             }
-            
+            rs = stmt.executeQuery(qry.countAns());
+            while(rs.next()) {
+                countA = rs.getInt("COUNT(answer)");
+            }
+
+            for(int qNum = 1; qNum <= countQ; qNum++) {
+
+                rs = stmt.executeQuery(qry.getQuestion(qNum));
+                rs.first();
+                question = rs.getString("question");
+                System.out.println(question);
+                
+                for (int aNum = 1; aNum <= countA; aNum++) {
+                    // 답변 항목 가져오기
+                    rs = stmt.executeQuery(qry.getAnswer(aNum));
+                    while(rs.next()) {
+                        answer = rs.getString("answer");
+                    }
+                    // 해당 답변 응답 갯수 가져오기
+                    rs2 = stmt.executeQuery(qry.getCountAnswers(qNum, aNum));
+                    while(rs2.next()) {
+                        numberA = rs2.getInt("COUNT(ans.ans_key)");
+                    }
+                    System.out.println(answer + ": " + numberA + " 개");
+                }
+                System.out.println();
+
+            }
         } catch (SQLException e) {
         e.printStackTrace();
         }

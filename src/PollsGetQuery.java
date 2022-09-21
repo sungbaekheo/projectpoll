@@ -11,6 +11,15 @@ public class PollsGetQuery {
         String query = "SELECT COUNT(question) FROM quest";
         return query;
     }
+
+    // 질문 받아오는 쿼리
+    public String getQuestion(int qNum) {
+        String query = "SELECT question FROM quest " +
+                        "WHERE quest_key = " + qNum;
+
+        return query;
+    }
+
     // 설문 번호에 따른 설문 결과 받아오는 쿼리
     public String getTotalResult(int id) {
 
@@ -36,6 +45,12 @@ public class PollsGetQuery {
         String query = "SELECT answer FROM ans " +
                         "WHERE ans_key = " + aNum;
 
+        return query;
+    }
+
+    // 답변 질문 갯수 받아오는 쿼리
+    public String countAns() {
+        String query = "SELECT COUNT(answer) FROM ans";
         return query;
     }
 

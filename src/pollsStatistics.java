@@ -32,6 +32,14 @@ public class PollsStatistics {
     public void statisticsByResponses(Statement stmt) {
 
         try {
+
+            rs3 = stmt.executeQuery(qry.getAllQuestions());
+            System.out.print("\t\t");
+            while(rs3.next()) {
+                question = rs3.getString("question");
+                System.out.print(question + " ");
+            }
+            System.out.println();
             // 설문 번호 받아오기
             rs = stmt.executeQuery(qry.getMaxNum());
             while(rs.next()) {
@@ -81,13 +89,14 @@ public class PollsStatistics {
             while(rs.next()) {
                 countQ = rs.getInt("COUNT(question)");
             }
+            // 답항 갯수 받아오기
             rs = stmt.executeQuery(qry.countAns());
             while(rs.next()) {
                 countA = rs.getInt("COUNT(answer)");
             }
 
             for(int qNum = 1; qNum <= countQ; qNum++) {
-
+                // 문항 가져와서 출력하기
                 rs = stmt.executeQuery(qry.getQuestion(qNum));
                 rs.first();
                 question = rs.getString("question");

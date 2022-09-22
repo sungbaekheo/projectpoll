@@ -31,10 +31,12 @@ INNER JOIN ans ON qna.ans_key = ans.ans_key)
 WHERE quest.quest_key = 1 and ans.ans_key = 4
 ;
 
+-- 답변 내용 가져오는 쿼리
 SELECT answer FROM ans
 WHERE ans_key = 5
 ;
 
+-- 문항과 답변에 따른 응답 갯수 받아오는 쿼리
 SELECT COUNT(ans.ans_key)
 FROM ((((response
 INNER JOIN res_q ON response.id = res_q.id)
@@ -43,3 +45,6 @@ INNER JOIN quest ON qna.quest_key = quest.quest_key)
 INNER JOIN ans ON qna.ans_key = ans.ans_key)
 where quest.quest_key = 2 and ans.ans_key = 5
 ;
+
+SELECT question FROM quest
+WHERE quest_key = 1;

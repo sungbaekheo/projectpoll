@@ -4,6 +4,7 @@ public class PollsPrintMenu {
 
     Scanner scan = new Scanner(System.in);
 
+    // 설문 프로그램 처음 시작 화면
     public String mainMenu() {
         System.out.println("-----------------------------------------------------------");
         System.out.println();
@@ -17,6 +18,7 @@ public class PollsPrintMenu {
         return mainButton;
     }
 
+    // 통계 항목 선택시 출력되는 화면
     public int statisticsMenu() {
         System.out.println("-----------------------------------------------------------");
         System.out.println();
@@ -30,6 +32,14 @@ public class PollsPrintMenu {
         int statisticsButton = Integer.parseInt(scan.nextLine());
         System.out.println("-----------------------------------------------------------");
         return statisticsButton;
+    }
+
+    // 설문 시작시 출력되는 화면
+    public String surveyMenu() {
+        System.out.println("\n설문을 시작합니다.");
+        System.out.print("\n이름을 입력하세요: ");
+        String name = scan.nextLine();
+        return name;
     }
 
 

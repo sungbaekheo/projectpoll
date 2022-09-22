@@ -12,7 +12,14 @@ public class PollsGetQuery {
         return query;
     }
 
-    // 질문 받아오는 쿼리
+     // 전체 질문 받아오는 쿼리
+     public String getAllQuestions() {
+        String query = "SELECT question FROM quest";
+
+        return query;
+    }
+
+    // 문항 번호별 질문 받아오는 쿼리
     public String getQuestion(int qNum) {
         String query = "SELECT question FROM quest " +
                         "WHERE quest_key = " + qNum;
@@ -33,6 +40,7 @@ public class PollsGetQuery {
         return query;
 
     }
+    
     // 설문 번호에 따른 유저 정보 받아오는 쿼리
     public String getUser(int id) {
         String query = "SELECT id, name FROM response " +

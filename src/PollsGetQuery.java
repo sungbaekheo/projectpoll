@@ -75,7 +75,19 @@ public class PollsGetQuery {
         return query;
     }
 
+    // 응답자 정보 입력하는 쿼리
+    public String insertIntoResponse(int id, String name) {
+        String query = "INSERT INTO response(id, name) " +
+                        "VALUES("+id+", "+name+")";
+        return query;
+    }
     
+    // 문항에 대한 답을 입력하는 쿼리
+    public String insertIntoQnA(int total, int qNum, int aNum) {
+        String query = "INSERT INTO qna(qna_key, ans_key, quest_key) " +
+                        "VALUES("+total+", "+aNum+", "+qNum+")";
+        return query;
+    }
 
     
 }

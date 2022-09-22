@@ -24,7 +24,6 @@ public class PollsSurvey {
                 id = rs.getInt("MAX(id)") + 1;
             }
 
-            System.out.println(id + " " + name);
 
 
         } catch (SQLException e) {
@@ -32,7 +31,10 @@ public class PollsSurvey {
             e.printStackTrace();
         }
 
-        
+    }
+    //  설문조사
+    public void survey() {
+
     }
     
 }

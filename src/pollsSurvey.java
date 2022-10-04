@@ -14,7 +14,6 @@ public class PollsSurvey {
     private String name;
     private int ans;
     private int countQ, total;
-    private String question;
 
     PollsGetQuery qry = new PollsGetQuery();
     PollsPrintMenu prt = new PollsPrintMenu();
@@ -75,15 +74,13 @@ public class PollsSurvey {
             String[] answerList = new String[ answer.size() ];
             answer.toArray(answerList);
             
-            int inst;
-            inst = stmt1.executeUpdate(qry.insertIntoResponse(id, name));
+            int inst = stmt1.executeUpdate(qry.insertIntoResponse(id, name));
             for(int i = 1; i<=countQ; i++) {
                 ans = Integer.parseInt(answerList[i-1]);
                 inst = stmt1.executeUpdate(qry.insertIntoQnA(total+i,i,ans));
                 inst = stmt1.executeUpdate(qry.insertIntoResQ(id, (total+i)));        
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

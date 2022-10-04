@@ -78,7 +78,7 @@ public class PollsGetQuery {
     // 응답자 정보 입력하는 쿼리
     public String insertIntoResponse(int id, String name) {
         String query = "INSERT INTO response(id, name) " +
-                        "VALUES("+id+", "+name+")";
+                        "VALUES("+id+", "+"\""+name+"\""+")";
         return query;
     }
     
@@ -89,5 +89,22 @@ public class PollsGetQuery {
         return query;
     }
 
-    
+    // 응답자와 답의 연결을 입력하는 쿼리
+    public String insertIntoResQ(int id, int total) {
+        String query = "INSERT INTO res_q(id, qna_key) " +
+                        "VALUES("+id+", "+total+")";
+        return query;
+    }
+
+    // total 갯수 받아오는 쿼리
+    public String getTotalNumber() {
+        String query = "SELECT COUNT(qna_key) FROM qna";
+        return query;
+    }
+
+    // 답항 리스트 받아오는 쿼리
+    public String getAllAnswers() {
+        String query = "SELECT answer FROM ans";
+        return query;
+    }
 }
